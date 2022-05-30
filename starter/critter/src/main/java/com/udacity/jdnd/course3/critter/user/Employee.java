@@ -9,8 +9,14 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Employee extends User{
+public class Employee {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
     @Column
     @ElementCollection(targetClass = EmployeeSkill.class)
     private Set<EmployeeSkill> skills;
@@ -28,6 +34,21 @@ public class Employee extends User{
         schedules.add(schedule);
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     public List<Schedule> getSchedules() {
         return schedules;
     }
